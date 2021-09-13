@@ -4,9 +4,9 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-/* header area */
+/* header area starts from here*/
 .navbar {
-    background-color: rgb(251, 205, 212);
+    background: linear-gradient(to right, #ffbfc2, #fad0c4);
 }
 
 .brand-name {
@@ -35,33 +35,9 @@ body {
 
 
 #search-btn {
-    background-color: rgb(251, 205, 212);
+    background: linear-gradient(to right, #ffa3a6, #fad0c4);
     color: black;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-}
-
-#addToCart-btn {
-    background-color: #FFE459;
-    color: black;
-    border: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 500;
-    padding: 5px 12px;
-    font-size: 14px;
-    margin-right: 10px;
-    border-radius: 5px;
-}
-
-#details-btn {
-    background-color: #CAF7E3;
-    color: black;
-    border: none;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    padding: 5px 12px;
-    font-size: 14px;
-    border-radius: 5px;
 }
 
 .search-box {
@@ -81,16 +57,15 @@ body {
     justify-content: center;
 }
 
-
 .single-product {
     margin: 10px;
     padding: 10px;
     transition: 0.6s;
-    /* border: 5px solid rgb(251, 205, 212); */
+    border: 1px solid rgb(255, 216, 221);
 }
 
 .single-product:hover {
-    box-shadow: 13px 13px 27px rgba(251, 205, 212, 0.897);
+    box-shadow: 13px 13px 27px rgba(31, 31, 31, 0.171);
     border-radius: 10px;
 }
 
@@ -99,9 +74,36 @@ body {
     height: 150px;
 }
 
+.rating {
+    color: #FF9529;
+}
+
+
+#addToCart-btn {
+    background-color: #FFE459;
+    color: black;
+    border: none;
+    font-weight: 500;
+    padding: 5px 12px;
+    font-size: 14px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+#details-btn {
+    background-color: #CAF7E3;
+    color: black;
+    border: none;
+    font-weight: 400;
+    padding: 5px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+
+/* cart div starts */
 .cart {
     width: 350px;
-    /* border: 1px solid green; */
     padding: 10px;
     box-shadow: 10px 10px 20px rgba(73, 73, 73, 0.726);
     border-radius: 5px;
@@ -109,10 +111,28 @@ body {
     position: fixed;
 }
 
+.cart h1 {
+    color: #ffa3a6;
+    text-shadow: 5px 5px 30px rgba(0, 0, 0, 0.089);
+}
+
 .cart-main {
     padding-right: 30px;
 }
 
+.buy-now-btn {
+    background: linear-gradient(to right, #ffa3a6, #fad0c4);
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border: none;
+    padding: 7px 14px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+
+/* media screen or responsive */
 @media only screen and (max-width: 768px) {
     #all-products {
         display: grid;

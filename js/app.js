@@ -246,7 +246,6 @@ const loadProducts = () => {
 
 // show all product in UI 
 const showProducts = (products) => {
-    console.log(products);
     for (const product of products) {
         const image = product.image;
         const div = document.createElement("div");
@@ -257,15 +256,61 @@ const showProducts = (products) => {
               <img class="product-image" src=${image}></img>
             </div>
             <h3>${product.title.slice(0,19)}</h3>
-            <p>Category: ${product.category}</p>
-            <h2>Price: $ ${product.price}</h2>
+            <p>Category : ${product.category}</p>
+            <p class="rating">ratings : ${product.rating.rate}(${product.rating.count})
+            </p>
+            <h4>Price: $ ${product.price}</h4>
             <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now">Add To Cart</button>
-            <button id="details-btn" class="">Details</button>
+            <button onclick="singleItemDetails(${product.id})" id="details-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Details</button>
         </div>
       `;
         document.getElementById("all-products").appendChild(div);
     }
 };
+
+// get single item details
+const singleItemDetails = (productId) => {
+    const url = `https://fakestoreapi.com/products/${productId}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => productDetailsShowModal(data));
+
+
+    // clear modal
+    const modalDialog = document.getElementById('modal-dialog');
+    modalDialog.textContent = '';
+}
+
+
+// product details show to the modal
+const productDetailsShowModal = (product) => {
+    const modalDialog = document.getElementById('modal-dialog');
+    const modalDiv = document.createElement('div');
+    modalDiv.classList.add('modal-content');
+    modalDiv.innerHTML = `
+    <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="text-center">
+          <img class="product-image" src=${product.image}></img>
+        </div>
+        <h2>${product.title}</h2>
+        <h5>Category : ${product.category}</h5>
+        <p><span style="font-weight: bold;">More details : </span>${product.description}</p>
+        <p class="rating">ratings: ${product.rating.rate}(${product.rating.count})
+        </p>
+        <h4>Price: $ ${product.price}</h4>
+    </div>
+    <div class="modal-footer">
+    <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now">Add To Cart</button>
+    </div>
+    `;
+
+    modalDialog.appendChild(modalDiv)
+
+}
 
 // product add to cart
 let count = 0;
